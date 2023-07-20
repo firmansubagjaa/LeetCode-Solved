@@ -1,26 +1,25 @@
-var isValid = function (s) {
+const checkBrackets = (s) => {
   const stack = []
 
   const brackets = {
     '(': ')',
     '{': '}',
     '[': ']'
-  };
+  }
 
   for (let i = 0; i < s.length; i++) {
     const char = s[i]
     if (brackets[char]) {
       stack.push(char)
     } else {
-      const lastOpeningBracket = stack.pop();
+      const lastOpeningBracket = stack.pop()
       if (brackets[lastOpeningBracket] !== char) {
-        return false;
+        return false
       }
     }
   }
+  return stack.length === 0 ? true : false
+}
 
-  return stack.length === 0;
-};
-
-const bracket = "[]";
-console.log(isValid(bracket));
+const brackets = '[]'
+console.log(checkBrackets(brackets))
